@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>NLP</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+<body>
+    <br><br><br><br><br><br>
+	<form action="/recommandations" method="POST">
+		<label for="nom_film">Entrez le nom d'un film:</label><br><br>
+		<input type="text" id="title" name="title">
+		<input type="submit" id="recher" value="Rechercher">
+	</form>
+    <br>
+	<div style="text-align:center">
+        <table>
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Titre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, movie in recommended_movies %}
+                <tr>
+                    <td>{{ index+1 }}</td>
+                    <td>{{ movie }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
